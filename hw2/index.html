@@ -1,7 +1,726 @@
-<html>
-	<head>
-	</head>
-	<body>
-		Homework 2 index.html here
-	</body>
-</html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CS184 Homework 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c9ce7861-4c28-4cba-8573-c11d94c74b89" class="page sans"><header><h1 class="page-title">CS184 Homework 2</h1><p class="page-description"></p></header><div class="page-body"><h1 id="71d08aab-06d8-426e-adb6-c49cac1275b7" class="">Overview</h1><p id="0de9b934-00c5-421e-88a0-586aeb2b750b" class="">In this assignment, I learned about the implementation of Bezier curves and surfaces, a way mathematically model smooth (both in a visual and mathematical sense) surfaces using ideas of cubic (or more generally polynomial) interpolation. I also got to implement operations on triangle meshes using the half-edge data structure, a pointer-based data structure to hold local connectivity and geometry information within a mesh. In particular, I implemented Loop subdivision using edge split and edge flip as subroutines, which takes a triangle mesh and iteratively smoothens it by creating new geometry and updating vertex locations according to a systematic update rule. </p><h1 id="3bdb41db-3962-44b1-ac12-81d1589c033a" class="">Section 1: Bezier Curves and Surfaces</h1><h2 id="4f40fa20-92dc-4e97-9c58-1f607e7c037e" class="">Part 1: Bezier Curves with 1D de Casteljau Subdivision</h2><p id="40ff3972-bbcb-4bd1-818a-622fad0b372b" class="">De Casteljau’s algorithm is a recursive approach to computing values along a Bezier curve. It takes a set of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> control points and parameter value <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span> as input, and outputs a value along the Bezier curve. In particular, we recursively define <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>x</mi><mo>⃗</mo></mover><mi>i</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mi>t</mi><msubsup><mover accent="true"><mi>x</mi><mo>⃗</mo></mover><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow><mi>k</mi></msubsup><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><mo stretchy="false">)</mo><msubsup><mover accent="true"><mi>x</mi><mo>⃗</mo></mover><mi>i</mi><mi>k</mi></msubsup><mtext> </mtext><mi mathvariant="normal">∀</mi><mn>1</mn><mo>≤</mo><mi>i</mi><mo>&lt;</mo><mi>n</mi><mo>−</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">\vec{x}^{(k+1)}_i = t\vec{x}^{k}_{i+1} + (1-t)\vec{x}^k_i \ \forall 1 \leq i &lt; n-i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3217em;vertical-align:-0.2769em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1661em;vertical-align:-0.317em;"></span><span class="mord mathnormal">t</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.317em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1078em;vertical-align:-0.2587em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-2.4413em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2587em;"><span></span></span></span></span></span></span><span class="mspace"> </span><span class="mord">∀1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6986em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span></span><span>﻿</span></span>, where the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover accent="true"><mi>x</mi><mo>⃗</mo></mover><mi>i</mi><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">\vec{x}_i^{(0)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3217em;vertical-align:-0.2769em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">0</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> are our input control points. Essentially, at each level of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></span><span>﻿</span></span>, we define new points by linearly interpolating between the points of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span>. When we reach a single point after <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span><span>﻿</span></span> iterations, that final point is the output of de Casteljau’s algorithm. Wikipedia gives a very nice animation of what this looks like as you vary <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span> through the range <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span></span><span>﻿</span></span>, with the green, blue, pink, and red corresponding to <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">k=1, 2, 3, 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4</span></span></span></span></span><span>﻿</span></span> respectively for this 4th degree Bezier curve with 5 control points.</p><figure id="a69b3a56-4b85-4e73-b691-bbed669a2711" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.gif"><img style="width:360px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.gif"/></a></figure><p id="4c8f4a15-28ec-4d15-8ffe-1b347a86bca2" class="">Pictured below is a 6 control point (degree 5) Bezier curve + intermediate control points for a constant value of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>, a slightly larger value of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span></span><span>﻿</span></span>, as well as the full Bezier curve traced out</p><figure id="76ddff3b-9720-4949-8964-f9ae7dfd3009" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.webp"><img style="width:1030px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.webp"/></a></figure><div id="9e2a2f12-b03f-4398-96d5-d0851bda3a22" class="column-list"><div id="9b76338c-4262-42cd-8188-1fafc71acdb6" style="width:50%" class="column"><figure id="b94c952e-f8a1-427f-b71e-f29ee0b116b9" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.png"><img style="width:960px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.png"/></a></figure><figure id="2b183b19-35ec-4572-8ec2-67f2bab6861f" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.png"><img style="width:958px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.png"/></a></figure><figure id="fd8432bf-6862-464e-a207-8dcf39a28adb" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%202.png"><img style="width:952px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%202.png"/></a></figure><figure id="0238c884-9ece-4f5d-8001-f32370e21507" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%203.png"><img style="width:954px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%203.png"/></a></figure></div><div id="a16cc699-1e4f-450d-8bec-b0286ffd625b" style="width:50%" class="column"><figure id="5872c987-4317-43c9-980a-18d6364e2735" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%204.png"><img style="width:956px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%204.png"/></a></figure><figure id="9a630469-c700-4c0e-9333-dc04e57e94de" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%205.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%205.png"/></a></figure><figure id="ccb3899a-2489-415f-8ae2-e84f8f71f735" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%206.png"><img style="width:956px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%206.png"/></a></figure><figure id="a55d62b6-d4ee-4c95-8225-9666ff550e34" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%207.png"><img style="width:953px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%207.png"/></a></figure></div></div><h2 id="343ae09b-8a33-4eb0-8ebb-d401c76bc93a" class="">Part 2: Bezier Surfaces with Separable 1D de Casteljau</h2><p id="8876176f-b637-4932-96f6-fae570861a3e" class="">Bezier curves are useful, but since they are infinitely thin, they can’t describe all smooth geometry that we might want to model. For this, we can consider a Bezier surface, which is a natural generalization of a Bezier curve into a two-dimensional manifold. We can evaluate points on this surface using a generalization of de Casteljau also. As input, we take <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> control points and two parameter values <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span>, <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span><span>﻿</span></span> ranging from 0 to 1. For each row of control points, we use the 1D algorithm described in the previous part with parameter <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span></span><span>﻿</span></span> and obtain a control point. With these <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span></span><span>﻿</span></span> control points, we again perform the 1D algorithm, but this time with parameter <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span></span><span>﻿</span></span>, and the resulting point is the output of our algorithm. The implementation I wrote follows this procedure exactly.</p><figure id="f7da5b97-a692-4fa9-a3e9-8d617293b15f" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%208.png"><img style="width:961px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%208.png"/></a><figcaption>Utah Teapot composed of Bezier patches</figcaption></figure><h1 id="d834eb4c-55de-4ad9-8ab1-09754d738bff" class="">Section 2: Triangle Meshes and Half-Edge Data Structure</h1><h2 id="94c056fc-d2f4-4dbc-bccc-1ceb86b5d51b" class="">Part 3: Area-Weighted Vertex Normals</h2><p id="611a4cf6-1739-41dd-92bd-2a889f268f02" class="">Area-weighted vertex normals are useful to obtain approximate vertex normals when this information is not supplied by the mesh itself, and as its name suggests, it is computed by taking an average of the normals of the faces surrounding a vertex, weighted by the size of each face. To calculate this, you have to iterate around all the faces surrounding a vertex. </p><p id="8c884370-e479-4511-8cb8-887a7bc8ee18" class="">This diagram demonstrates the iteration scheme: at each iteration, we start with a half-edge pointing away from the vertex. It finds the vector <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>v</mi><mo>⃗</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\vec{v}_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> between the vertex on the other half of the edge and our current vertex. Then, it traverses to the other edge of face 1 we are connected to and finds the second vector <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>v</mi><mo>⃗</mo></mover><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\vec{v}_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span>. At the beginning of each loop except the first, we check if the halfedge we are processing is equal to the initial halfedge (the one associated with the vertex). This is to ensure we don’t loop infinitely or accidentally count any face twice.</p><p id="76f9be49-6f58-456d-afa2-213c262e9124" class="">To calculate the normal of face 1, we take <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>v</mi><mo>⃗</mo></mover><mn>2</mn></msub><mo>×</mo><msub><mover accent="true"><mi>v</mi><mo>⃗</mo></mover><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\vec{v}_2 \times \vec{v}_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.864em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2077em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg xmlns="http://www.w3.org/2000/svg" width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
+3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
+10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
+-1.333 1.333-3.167 3.5-5.5 6.5s-4 4.833-5 5.5c-1 .667-2.5 1.333-4.5 2s-4.333 1
+-7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
+H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
+c-16-25.333-24-45-24-59z'/></svg></span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span>﻿</span></span> in accordance with the right-hand rule to get the outward facing normal. This gets added to a running total, and the sum of all normals is normalized at the end to get the final area-weighted vertex normal. </p><p id="46dc99dc-96ad-48e0-acba-cbd5ba77c644" class="">A small detail is that when we consider a boundary face, we skip calculating its normal / area since it isn’t necessarily a triangle and it isn’t actually part of the mesh, so including it wouldn’t make sense.</p><figure id="5bf4d01f-8f1f-4505-9b6a-49c25ac108e8" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.webp"><img style="width:1067px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.webp"/></a></figure><p id="6b730e45-ea95-4fe8-ae83-bd4cbce962ad" class="">The area-weighted vertex normals can be used to do nicer smooth shading. By using barycentric interpolation with the calculated vertex normals for each point being rasterized to get a shading normal, we can get the Phong shaded result on the right, which looks less obviously faceted than the flat shading on the left (where each point on a triangle is shaded using the normal of the triangle directly).</p><div id="f1a52f97-66d2-42c3-8fc2-5e47954e316a" class="column-list"><div id="78ef0f33-9d26-464a-9f72-c77685222d96" style="width:50%" class="column"><figure id="8635b120-5e25-4ffd-9a5b-f865b0917ce7" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%209.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%209.png"/></a></figure></div><div id="159e9b89-0c79-4ad3-b371-4fd93b2c59b1" style="width:50%" class="column"><figure id="3b015214-44ec-4f08-9033-4ed1cc9e8bd1" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2010.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2010.png"/></a></figure></div></div><h2 id="ac0a80a8-f57e-446d-8977-642069c2c4c5" class="">Part 4: Edge Flip</h2><p id="9b7c32cd-766f-455b-ac7c-6748e4402624" class="">The edge flip operation takes an edge between two triangles and “flips it” by rearranging the connectivity within those two triangles. Crucially, none of the positions of the vertices is modified, however this can still change the geometry of the mesh since the 4 points making up these two triangles aren’t necessarily coplanar. I implemented this operation by following the suggestion to draw a diagram, figure out what each face, edge, and vertex should point to as an associated halfedge, and what the next / twin / vertex / edge / face of each halfedge after the edge flip operation should be. After this, it was just a matter of putting it into code, and the result was correct on the first try, which was nice.</p><figure id="a0fb9f38-7192-47b6-afae-601b7eb72b96" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%202.webp"><img style="width:511px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%202.webp"/></a></figure><div id="716d1110-cc39-4de1-9699-17136a7eda2a" class="column-list"><div id="664143ba-a172-449a-a797-0ed44c2276b5" style="width:50%" class="column"><figure id="a2b91a94-1e49-45bf-b982-8d0c2c5e6184" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2011.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2011.png"/></a><figcaption>Original mesh</figcaption></figure></div><div id="43fa1c6b-0de0-408a-b6c6-0d4a9e6ce151" style="width:50%" class="column"><figure id="df9c4124-720d-4014-b6fb-3bd7711dbd1e" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2012.png"><img style="width:956px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2012.png"/></a><figcaption>Mesh after flipping some edges, note that the shading looks a bit weird since the new topology represents a “dent” in the teapot</figcaption></figure></div></div><h2 id="3a803ebc-a7d6-460b-958f-4afa9a98f191" class="">Part 5: Edge Split</h2><p id="bb5ed452-5a80-4857-b3de-f4befc1d8121" class="">The edge split operation takes an edge between two triangles and creates a new vertex at its midpoint, adding edges to the other vertices of the two triangles to create a vertex with degree 4. Along with edge flip, it is used as a subroutine in the implementation of Loop subdivision. I followed a similar approach as with the edge flip implementation, diagramming out all the faces, edges, vertices, and half-edges, then transferring it into code. I didn’t run into any issues with correctness. </p><div id="59722d8d-14f5-4be8-bdcc-c1811deb34ab" class="column-list"><div id="a8aa1aac-476a-40a3-88e3-5985e261782f" style="width:50%" class="column"><figure id="97ba2e0d-e64e-4714-a90b-4e43351e5b86" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2013.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2013.png"/></a><figcaption>Original mesh</figcaption></figure><p id="58b488b3-bb92-41a3-8f46-c71b6cf95ab4" class="">
+</p></div><div id="7200a650-e556-4d74-8c7f-baab163e5e01" style="width:50%" class="column"><figure id="ee761a1d-9a2b-4242-a038-c68a411ff076" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2014.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2014.png"/></a><figcaption>After edge splits</figcaption></figure><figure id="fa887107-0e9d-429b-b920-b1158da9bfbb" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2015.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2015.png"/></a><figcaption>After edge splits + edge flips</figcaption></figure></div></div><figure id="2d5fa017-9612-4fa1-beb6-48025edcffb3" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%203.webp"><img style="width:1030px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%203.webp"/></a><figcaption>Diagram of edge split</figcaption></figure><p id="bd3ea6f0-5625-4113-b793-a257bdb62ede" class="">I also added support for boundary edges, which just involves only splitting the non-boundary face. </p><div id="66be299c-3f5f-4051-9fc8-e69187db0f5d" class="column-list"><div id="c24be4a8-2aa6-42bd-b53b-cd8cc1ac499a" style="width:50%" class="column"><figure id="1b3361f8-5054-4db3-8386-d69c2d42fd7f" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2016.png"><img style="width:965px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2016.png"/></a><figcaption>Prior to split</figcaption></figure></div><div id="11c09c54-cc04-40b2-a480-1879f9045280" style="width:50%" class="column"><figure id="28f7175b-59bd-40ee-b9f1-77528c1e8277" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2017.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2017.png"/></a><figcaption>After split</figcaption></figure></div></div><figure id="b0be9268-8d77-4b1d-bad2-a66a6eac2ddd" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%204.webp"><img style="width:825px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%204.webp"/></a><figcaption>Diagram for boundary edge split</figcaption></figure><h2 id="6006c903-493b-4d24-a52f-36016d0bd42a" class="">Part 6: Loop Subdivision for Mesh Upsampling</h2><p id="4817ff93-62ef-4d2c-82bb-e05aa0105e65" class="">Loop subdivision is a technique to smooth a mesh by creating new geometry and changing the position of old geometry in a systematic manner to approach a smooth underlying surface. As shown in the following graphic from the assignment page, we can use the edge split and edge flip subroutines in order to split each triangle face into 4 smaller triangles. To implement the update rule, we traverse over the coarser mesh first and store a new position (according to the update rule) for each vertex and each edge without actually committing any changes. We then create the new geometry using edge split + edge flip, then make a final pass to move all the points (old and new) into place. Keeping track of which edges should be flipped is a bit tricky and took some debugging effort. In particular, preventing the algorithm from splitting edges created by an edge split with only the <code>isNew</code> field wasn’t totally trivial. This is because the edge split breaks existing edges into two segments, and if we only condition on <code>isNew</code> when checking which edges to not split, we could end up splitting one of those two segments again, causing a situation where we continue splitting edges forever. To solve this, I added a new field <code>dontSplit</code>, which does as its name suggests - this marks an edge to not be split by the algorithm, even if it doesn’t contain position information for the midpoint vertex. </p><figure id="c37b99f7-bf5f-4f1c-b1d2-fb4f5314f9be" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.jpeg"><img style="width:1800px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled.jpeg"/></a></figure><figure id="f3aaa03c-766f-43d8-a319-f5839f806ba0" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.jpeg"><img style="width:1000px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%201.jpeg"/></a></figure><div id="83512aaa-f94a-4392-8c8e-49e448470f5e" class="column-list"><div id="a09c45a3-8fa0-4a8d-8536-c7ec3b9ef4e2" style="width:50%" class="column"><figure id="0ad8b553-2ec4-4663-a064-4bc5301e0b8f" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2018.png"><img style="width:962px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2018.png"/></a><figcaption>torus.dae at subdivision level 0</figcaption></figure></div><div id="50652a42-a4d2-489e-80d8-49203e04d0a4" style="width:50%" class="column"><figure id="f3266d6b-adee-4ec6-941c-3e1d7df0af74" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2019.png"><img style="width:958px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2019.png"/></a><figcaption>subdivision level 1</figcaption></figure></div></div><div id="c88bdafd-aa23-4aab-ae99-99312d8820ec" class="column-list"><div id="a8bdaa02-e7cc-471a-8862-31a509c0a968" style="width:50%" class="column"><figure id="034d0f3f-eb78-4d5d-9a84-3f93cf806c96" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2020.png"><img style="width:952px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2020.png"/></a><figcaption>subdivision level 2</figcaption></figure></div><div id="2ae7bf5a-f493-408a-8868-974849de2a44" style="width:50%" class="column"><figure id="f8ff47b9-b3f4-48e6-b6cd-4e26bc695fdc" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2021.png"><img style="width:952px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2021.png"/></a><figcaption>subdivision level 3</figcaption></figure></div></div><p id="b95a3dcc-fddb-43b9-be3a-da1a86dcf7ed" class="">Generally, it is clear that sharp corners and edges get smoothed at each iteration of the subdivision surface. We can reduce this effect by splitting an edge several times, as this creates multiple points along the edge that are now neighbors to eachother. Since Loop subdivision acts locally, only considering the direct neighbors of a point, the smoothing influence from points not along the edge is lessened, which means that the sharpness of the edge is better maintained. </p><div id="9420532a-0afd-4ffb-aad1-b975e647855e" class="column-list"><div id="15d2dde8-e51a-485e-b7d9-9ac6289cd370" style="width:50%" class="column"><figure id="4ab00323-f4f9-4813-9376-f9e75910db21" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2022.png"><img style="width:956px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2022.png"/></a><figcaption>w/ edge splits</figcaption></figure></div><div id="53e7a8df-021b-4d3e-a717-9702e896a369" style="width:50%" class="column"><figure id="d67b372e-2b1e-4129-963f-ffbafcade238" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2023.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2023.png"/></a><figcaption>edge is better preserved after subdivision</figcaption></figure></div></div><p id="bf7e770d-d3c3-4124-a613-9c1c3d0ad9de" class="">This is conceptually similar to how in modeling programs (like Blender), one can add a loop cut near an edge to make the subdivision less powerful near that edge. They also have a “crease” edge attribute that does something similar - the higher the “crease”, the more the edge acts like a crease (i.e. not being affected by subdivision)</p><figure id="a85562c7-86f8-4f36-b0f6-14b94cabdccb" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2024.png"><img style="width:620px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2024.png"/></a><figcaption>Additional loops</figcaption></figure><figure id="232d58af-d68c-4ebb-a067-01fd0428f5b4" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2025.png"><img style="width:263px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2025.png"/></a><figcaption>Crease attribute</figcaption></figure><p id="e3cd2253-c311-4800-9eb3-edc6cc23da12" class="">Some distortion occurs when we subdivide the cube</p><div id="19748c0f-9503-47a9-9da7-d62815ec14f8" class="column-list"><div id="231bd411-48c0-4036-89ed-2ed6adaa32a2" style="width:50%" class="column"><figure id="a66acdab-bab7-4876-80ca-e82c75174e48" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2026.png"><img style="width:960px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2026.png"/></a></figure></div><div id="94aff188-2c27-47df-b4d3-6aa05077532e" style="width:50%" class="column"><figure id="63b1e9a8-e933-4a00-b74c-f0cc64a88589" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2027.png"><img style="width:959px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2027.png"/></a><figcaption>subdivision level 3</figcaption></figure></div></div><p id="1e442fa6-b683-47f0-a800-a6fc300a7ba3" class="">The reason why can be seen in the wireframe - notice that the vertex in the middle of the screen has degree 5, and the one below it has degree 4. As a result, the one with higher degree feels the effects of more of its neighbors being averaged with it; we can fix this asymmetry by doing edge splits to make the vertices of the cube all have equal degree. </p><div id="5692ecfa-b519-46b3-9845-2af02da632e3" class="column-list"><div id="92f936cc-c06f-4043-899e-81e68de48340" style="width:50%" class="column"><figure id="51a72ab4-24de-4654-9085-1224b139a477" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2028.png"><img style="width:951px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2028.png"/></a><figcaption>original wireframe</figcaption></figure></div><div id="e4743316-8c8b-4b77-bc64-f0ebc19d78d7" style="width:50%" class="column"><figure id="67eb30e1-9ed9-4965-8980-9f1ad9070c5b" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2029.png"><img style="width:955px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2029.png"/></a><figcaption>after processing</figcaption></figure><figure id="8e90142c-6b45-4a86-972e-3bfb3d272732" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2030.png"><img style="width:956px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2030.png"/></a><figcaption>less asymmetric</figcaption></figure></div></div><p id="e9381622-0967-4604-beea-f8879d6b2084" class="">I used a simple averaging rule to deal with crease edges and crease vertices to support meshes with boundary. In particular, for a boundary edge, the new midpoint is just the average of surrounding points, and for a vertex on the boundary, its new position is <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.75</mn></mrow><annotation encoding="application/x-tex">0.75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.75</span></span></span></span></span><span>﻿</span></span> times its current position + <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.125</mn></mrow><annotation encoding="application/x-tex">0.125</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.125</span></span></span></span></span><span>﻿</span></span> of the two adjacent vertices on the same boundary face.</p><div id="247e78b6-7e15-4fd0-8523-15fa103bc466" class="column-list"><div id="0556b02c-ae0a-41b9-9ce6-dfe77c05862e" style="width:50%" class="column"><figure id="20b7ef13-25ed-4efa-87a6-c1671fbc57f0" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2031.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2031.png"/></a><figcaption>mesh w/ boundary</figcaption></figure></div><div id="8a31b0b0-ba0d-43b4-8478-0bff064ba7b4" style="width:50%" class="column"><figure id="a83a9a6b-d576-4004-9db8-28289609811b" class="image"><a href="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2032.png"><img style="width:957px" src="CS184%20Homework%202%20c9ce78614c284cba8573c11d94c74b89/Untitled%2032.png"/></a><figcaption>subdivision level 1, beyond 1 makes my computer hurt</figcaption></figure></div></div><p id="f37b8935-ac18-43ac-a2d9-bebc103bda5b" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
